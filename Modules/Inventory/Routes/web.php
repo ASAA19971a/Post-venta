@@ -13,6 +13,7 @@
 
 Route::prefix('inventory')->group(function() {
     Route::view('/products', 'inventory::livewire.administration.product.index');
+    Route::view('/products/create', 'inventory::livewire.administration.product.create-product.index');
     Route::view('/products/config/{id}', 'inventory::livewire.administration.product.config.index');
 
     Route::view('/categories', 'inventory::livewire.administration.category.index');

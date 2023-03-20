@@ -3,14 +3,27 @@
 namespace Modules\Inventory\Http\Livewire\Administration\Product\CreateProduct;
 
 use Livewire\Component;
+use Modules\Inventory\Entities\Category;
 
 class CreateProduct extends Component
 {
+
+    public $categories;
+    public $name,$description,$price,$category;
+    // variables para atributos
     public $attributes = [];
     public $attributeName;
     public $attributeDescription;
     public $editIndex = null;
 
+    public function mount(){
+        $this->categories = Category::all();
+        $categoryNames = [];
+        foreach ($this->categories as $category) {
+            $categoryNames[(string) $category->_id] = $category->name;
+        }
+        $this->categoryNames = $categoryNames;
+    }
     public function render()
     {
         return view('inventory::livewire.administration.product.create-product.create-product');
@@ -28,7 +41,6 @@ class CreateProduct extends Component
                 'description' => $this->attributeDescription
             ];
         }
-
         // Limpiamos los campos después de agregar o editar el atributo
         $this->attributeName = '';
         $this->attributeDescription = '';

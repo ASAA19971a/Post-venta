@@ -19,6 +19,7 @@
     </form>
 
     <hr>
+    <td><a href="{{ url('inventory/products/create') }}">Nuevo</a></td>
 
     @if ($data)
         <table class="table">

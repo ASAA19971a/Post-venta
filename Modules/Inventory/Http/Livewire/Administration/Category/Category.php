@@ -11,12 +11,6 @@ class Category extends Component
     public $categories;
     public $categoryId, $name, $description;
 
-
-    /* protected $listeners = ['categoryCreated' => 'loadCategories',
-                            'categoryUpdated' => 'loadCategories',
-                            'categoryDeleted' => 'loadCategories']; */
-
-
     public function __construct()
     {
         $this->categories = categoryDb::whereNull('deleted_at')->get();
