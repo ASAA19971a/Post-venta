@@ -16,6 +16,8 @@ class CreateProduct extends Component
     public $attributeDescription;
     public $editIndex = null;
 
+    public $oficinas =[0=>['nombre' => '','direccion' => '','telefono' => '']];
+
     public function mount(){
         $this->categories = Category::all();
         $categoryNames = [];
@@ -77,5 +79,23 @@ class CreateProduct extends Component
     public function deleteAttribute($index)
     {
         unset($this->attributes[$index]);
+    }
+
+    public function agregarOficina()
+    {
+        $this->oficinas[] = [
+            'nombre' => '',
+            'direccion' => '',
+            'telefono' => ''
+        ];
+    }
+
+    public function eliminarOficina($index)
+    {
+        unset($this->oficinas[$index]);
+        $this->oficinas = array_values($this->oficinas); // Reindexar el arreglo de oficinas
+    }
+    public function save(){
+        dd($this->oficinas);
     }
 }

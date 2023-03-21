@@ -98,6 +98,29 @@
         <textarea wire:model="attributeDescription"></textarea> --}}
         <!-- Botón para agregar nuevo atributo -->
 
+        <hr>
+        <div>
+            <button wire:click="agregarOficina">Añadir oficina</button>
+
+            @foreach ($oficinas as $index => $oficina)
+                <div>
+                    <h2>Oficina {{ $index + 1 }}</h2>
+
+                    <label>Nombre:</label>
+                    <input type="text" wire:model="oficinas.{{ $index }}.nombre">
+
+                    <label>Dirección:</label>
+                    <input type="text" wire:model="oficinas.{{ $index }}.direccion">
+
+                    <label>Teléfono:</label>
+                    <input type="text" wire:model="oficinas.{{ $index }}.telefono">
+
+                    @if ($index != 0)
+                        <button wire:click="eliminarOficina({{ $index }})">Eliminar oficina</button>
+                    @endif
+                </div>
+            @endforeach
+        </div>
 
         <div class="d-flex justify-content-center p-2">
             <button type="button" wire:click="save" class="btn btn-success mx-3">Guardar</button>
